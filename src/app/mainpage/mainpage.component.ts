@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ItemService } from '../services/item.service';
+import { Item } from '../item';
 
 @Component({
   selector: 'app-mainpage',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainpageComponent implements OnInit {
   textField: string = "";
-  listOfInputs: Array<String> = [];
+  listOfInputs: Array<Item>;
 
-  constructor() { }
+  constructor(private _itemService: ItemService) { 
+    this.listOfInputs = this._itemService.listOfItems;
+    this.addNewInput("Mockup Data 1");
+    this.addNewInput("Mockup Data 2");
+    this.addNewInput("Mockup Data 3");
+  }
 
   ngOnInit() {
   }
@@ -18,9 +25,13 @@ export class MainpageComponent implements OnInit {
     console.log("Submit pressed");
   }
 
-  enterPressed(textInput: string){
-    if (textInput === "") return;
-    console.log(textInput);
+  addNewInput(textInput: string){
+    this._itemService.addNewItem(textInput);
     this.textField = "";
+  }
+
+  onModifyInput(data){
+    // this.textField = data;
+    // console.log(data);
   }
 }

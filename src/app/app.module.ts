@@ -4,18 +4,23 @@ import { Form, FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
+import { CurrentinputsComponent } from './currentinputs/currentinputs.component';
 
+import { ItemService } from './services/item.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainpageComponent
+    MainpageComponent,
+    CurrentinputsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    ItemService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

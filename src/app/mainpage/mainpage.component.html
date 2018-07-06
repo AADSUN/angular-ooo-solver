@@ -1,10 +1,13 @@
 <div id="topSection">
     <div id="formBox">
       <h1>Odd One Out Solver</h1>
-      <input id="textInput" #myValue type="text" [(ngModel)]="textField" (keyup.enter)="enterPressed(myValue.value)">
+      <input id="textInput" #myValue type="text" [(ngModel)]="textField" (keyup.enter)="addNewInput(myValue.value)">
       <button type="button" class="btn btn-primary" (click)=submit()>Submit</button>
     </div>
 </div>
 <div id="bottomSection">
-
+  <app-currentinputs id="cardInput" 
+    [listOfInputs]="listOfInputs"
+    (modifyInput)="onModifyInput($event)">
+  </app-currentinputs>
 </div>

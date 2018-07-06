@@ -1,0 +1,53 @@
+.card {
+    text-align: left;
+    border-radius: 0;
+    box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.75);
+}
+
+li {
+    -moz-transition: all .1s ease-in;
+    -o-transition: all .1s ease-in;
+    -webkit-transition: all .1s ease-in;
+    transition: all .1s ease-in;    
+}
+
+li:hover {
+    background-color: #ada4a4;
+    border-color: #ada4a4;
+}
+
+li:active {
+    background-color: #857f7f;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
+}
+
+.glyphicon-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -ms-animation: spin .7s infinite linear;
+    -webkit-animation: spinw .7s infinite linear;
+    -moz-animation: spinm .7s infinite linear;
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}
+  
+@-webkit-keyframes spinw {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@-moz-keyframes spinm {
+    from { -moz-transform: rotate(0deg);}
+    to { -moz-transform: rotate(360deg);}
+}
