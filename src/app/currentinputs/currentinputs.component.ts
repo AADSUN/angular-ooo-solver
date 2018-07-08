@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 import { Item } from '../item';
+import { ItemService } from '../services/item.service';
 
 @Component({
   selector: 'app-currentinputs',
@@ -8,15 +9,19 @@ import { Item } from '../item';
 })
 export class CurrentinputsComponent implements OnInit {
   @Input('listOfInputs') listOfInputs: Array<Item>;
-  @Output() modifyInput = new EventEmitter<Item>();
+  @Output() onItemClicked = new EventEmitter<Item>();
 
-  constructor() {}
+  constructor(private _itemService: ItemService) {}
 
   ngOnInit() {
   }
 
-  itemClicked(event){
-    this.modifyInput.emit(event.childNodes[0]);
+  itemClicked(itemName) {
+    this.onItemClicked.emit(itemName);
+  }
+
+  deleteItem(itemName) {
+    this._itemService.deleteItem(itemName);
   }
 
 }

@@ -13,9 +13,10 @@ export class MainpageComponent implements OnInit {
 
   constructor(private _itemService: ItemService) { 
     this.listOfInputs = this._itemService.listOfItems;
-    this.addNewInput("Mockup Data 1");
-    this.addNewInput("Mockup Data 2");
-    this.addNewInput("Mockup Data 3");
+    this.addNewInput("Apple");
+    this.addNewInput("Banana");
+    this.addNewInput("NoPage123");
+    this.addNewInput("table");
   }
 
   ngOnInit() {
@@ -26,12 +27,15 @@ export class MainpageComponent implements OnInit {
   }
 
   addNewInput(textInput: string){
-    this._itemService.addNewItem(textInput);
+    this._itemService.addItem(textInput);
     this.textField = "";
   }
 
-  onModifyInput(data){
-    // this.textField = data;
-    // console.log(data);
+  onItemClicked(data){
+    // return;
+    let item = this._itemService.getItem(data);
+    console.log("----");
+    console.log(item);
+    console.log("----");
   }
 }

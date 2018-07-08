@@ -4,7 +4,23 @@
     <p class="card-text">A list of current inputs you can view and modify before submitting.</p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item" #item *ngFor="let text of listOfInputs" (click)="itemClicked(item)">{{ text.title }}</li>
+    <li class="list-group-item" 
+        *ngFor="let item of listOfInputs" 
+        [ngClass]="{'ambigData': item.status.isAmbig,
+                    'missingData': item.status.isMissing}"
+        (click)="itemClicked(item.title)">
+      <div id="leftSide">
+        {{ item.title }}
+      </div>
+      <div id="rightSide">
+        <div class="lds-ring"
+            [ngClass]="{'hidden': item.isReady() || item.status.isAmbig || item.status.isMissing}">
+        <div></div><div></div><div></div><div></div></div>
+        <img id="questionMark" src="assets/svg/question-mark.svg"
+            [ngClass]="{'hidden': !item.status.isAmbig && !item.status.isMissing }">
+        <img id="deleteButton" (click)="deleteItem(item.title)" src="assets/svg/x-button.svg">
+      </div>
+    </li>
   </ul>
   <div class="card-body"></div>
 </div>
