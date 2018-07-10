@@ -6,8 +6,31 @@
     </div>
 </div>
 <div id="bottomSection">
-  <app-currentinputs id="cardInput" 
-    [listOfInputs]="listOfInputs"
-    (onItemClicked)="onItemClicked($event)">
-  </app-currentinputs>
+  <div id="cardSection">
+    <app-currentinputs 
+      id="aCard" 
+      [listOfInputs]="listOfInputs"
+      (onItemClicked)="onItemClicked($event)">
+    </app-currentinputs>
+
+    <div 
+        [ngSwitch]="showCard"
+        *ngIf="_itemService.contains(selectedItem)">
+      <app-alternative-input
+        *ngSwitchCase="'alternativeInput'"
+        (closeCard)="closeCard()"
+        [item]="selectedItem">
+      </app-alternative-input>
+      <app-missing-input
+        *ngSwitchCase="'missingInput'"
+        (closeCard)="closeCard()"
+        [item]="selectedItem">
+      </app-missing-input>
+      <app-more-information
+        *ngSwitchCase="'moreInformation'"
+        (closeCard)="closeCard()"
+        [item]="selectedItem">
+      </app-more-information>
+    </div>
+  </div>
 </div>

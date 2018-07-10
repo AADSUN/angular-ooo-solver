@@ -1,0 +1,35 @@
+.card {
+    text-align: left;
+    border-radius: 0;
+    box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.75);
+}
+
+#bottomSection {
+    margin: 0 0.5em 0.5em 0.5em;
+}
+
+#textSpan {
+    float: right;
+    margin-right: 1em;
+    color: rgb(52, 128, 214);
+}
+
+#textSpan:hover {
+    color: rgb(35, 120, 216);
+    font-weight: bold;
+}
+
+#textSpan:active {
+    color: rgb(52, 128, 214);
+    font-weight: normal;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
+}

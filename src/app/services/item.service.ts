@@ -69,4 +69,13 @@ export class ItemService {
       console.log(err);
     })
   }
+
+  selectLink(item: Item, linkName: string) {
+    item.chooseLinkTitle(linkName);
+    this.getItemData(item);
+  }
+
+  contains(item: Item) {
+    return this.listOfItems.includes(item); 
+  }
 }

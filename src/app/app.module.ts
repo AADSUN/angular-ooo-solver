@@ -9,12 +9,18 @@ import { CurrentinputsComponent } from './currentinputs/currentinputs.component'
 
 import { ItemService } from './services/item.service';
 import { WikipediaService } from './services/wikipedia.service';
+import { MoreInformationComponent } from './card/more-information/more-information.component';
+import { MissingInputComponent } from './card/missing-input/missing-input.component';
+import { AlternativeInputComponent } from './card/alternative-input/alternative-input.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainpageComponent,
-    CurrentinputsComponent
+    CurrentinputsComponent,
+    MoreInformationComponent,
+    MissingInputComponent,
+    AlternativeInputComponent
   ],
   imports: [
     BrowserModule,

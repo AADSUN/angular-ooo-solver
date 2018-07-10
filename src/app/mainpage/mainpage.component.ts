@@ -10,6 +10,9 @@ import { Item } from '../item';
 export class MainpageComponent implements OnInit {
   textField: string = "";
   listOfInputs: Array<Item>;
+  
+  selectedItem: Item;
+  showCard: string = "";
 
   constructor(private _itemService: ItemService) { 
     this.listOfInputs = this._itemService.listOfItems;
@@ -26,16 +29,27 @@ export class MainpageComponent implements OnInit {
     console.log("Submit pressed");
   }
 
+  closeCard() {
+    this.selectedItem = null;
+  }
+
   addNewInput(textInput: string){
     this._itemService.addItem(textInput);
     this.textField = "";
   }
 
   onItemClicked(data){
-    // return;
     let item = this._itemService.getItem(data);
-    console.log("----");
-    console.log(item);
-    console.log("----");
+    this.selectedItem = item;
+    if (this.selectedItem == null) return;
+    if (item.status.isAmbig) {
+      this.showCard = "alternativeInput";
+    }
+    else if (item.status.isMissing) {
+      this.showCard = "missingInput";
+    }
+    else {
+      this.showCard = "moreInformation";
+    }
   }
 }
