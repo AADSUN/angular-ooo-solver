@@ -33,8 +33,15 @@ export class Item {
   }
 
   addCategories(listOfCategories: Array<string>){
-    this.categories = this.categories.concat(listOfCategories.slice(0));
-    this.pendingCategories = listOfCategories.slice(0);
+    let newCategories = listOfCategories.slice();
+    this.pendingCategories = [];
+    
+    for (let i = 0; i < newCategories.length; i++) {
+      if (!this.categories.includes(listOfCategories[i])) {
+        this.categories.push(listOfCategories[i]);
+        this.pendingCategories.push(listOfCategories[i]);
+      }
+    }
     this.currDepth++;
   }
 
