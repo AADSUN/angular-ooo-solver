@@ -1,0 +1,18 @@
+<div class="card noselect" style="width: 20rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{ title }}</h5>
+    <p class="card-text">{{ paragraphText }}</p>
+  </div>
+  <ul class="list-group list-group-flush" *ngIf="listOfData.length > 0">
+    <li class="list-group-item" 
+        *ngFor="let dataEntry of listOfData"
+        (click)="onItemClicked.emit([title, dataEntry])">
+      <div id="leftSide">
+        {{ dataEntry }}
+      </div>
+    </li>
+  </ul>
+  <div id="bottomSection">
+    <span id="textSpan" (click)="close()">Ok</span>
+  </div>
+</div>

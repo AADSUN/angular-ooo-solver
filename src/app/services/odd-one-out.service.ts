@@ -24,12 +24,16 @@ export class OddOneOutService {
       }
     }
 
+    if (currMax == 0) {
+      return null;
+    }
+
     // Find the missing item from the list of items, which will be the odd one out
     for (let i = 0; i < listOfItems.length; i++) {
       if (!intersections[maxIndex].titles.includes(listOfItems[i].title)) {
         return {
           oddOneOut: listOfItems[i].title,
-          commonItems: intersections[maxIndex]
+          commonItems: intersections[maxIndex].categories
         }
       }
     }

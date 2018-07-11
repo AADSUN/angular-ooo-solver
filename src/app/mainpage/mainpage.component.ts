@@ -11,16 +11,17 @@ import { Item } from '../item';
 export class MainpageComponent implements OnInit {
   textField: string = "";
   listOfInputs: Array<Item>;
-  
+  result: Object;
   selectedItem: Item;
-  showCard: string = "";
+  showCard: boolean = false;
+  cardDetails: {
+    title: string,
+    paragraphText: string,
+    listOfData: Object
+  }
 
   constructor(private _itemService: ItemService, private _oddOneOutService: OddOneOutService) { 
     this.listOfInputs = this._itemService.listOfItems;
-    this.addNewInput("Apple");
-    this.addNewInput("Banana");
-    this.addNewInput("Peach");
-    this.addNewInput("Pie");
   }
 
   ngOnInit() {
@@ -29,7 +30,12 @@ export class MainpageComponent implements OnInit {
   submit(){
     try {
       let result = this._oddOneOutService.getOddOneOut(this.listOfInputs);
-      console.log(result);
+      if (result == null) {
+        console.log("No result could be found.") // Todo: Search a higher depth
+        return;
+      }
+      result['paragraphText'] = "The item '" + result.oddOneOut + "', was selected to be the odd one out due to not falling into the categories shown below."
+      this.result = result;
     }
     catch(e) {
       if (e == "Invalid parameter length") {
@@ -39,32 +45,60 @@ export class MainpageComponent implements OnInit {
         console.log("Certain items are not ready yet");
       }
       else {
-        console.log("Unknown error");
+        console.log("Unknown error", e);
       }
     }    
   }
 
   closeCard() {
-    this.selectedItem = null;
+    this.showCard = false;
   }
 
-  addNewInput(textInput: string){
+  closeResultCard() {
+    this.result = null;
+  }
+
+  addNewInput(textInput: string) {
     this._itemService.addItem(textInput, 3);
     this.textField = "";
   }
 
-  onItemClicked(data){
+  onItemClicked(data) {
     let item = this._itemService.getItem(data);
+    if (item == null) return;
     this.selectedItem = item;
-    if (this.selectedItem == null) return;
     if (item.status.isAmbig) {
-      this.showCard = "alternativeInput";
+      this.cardDetails = {
+        title: "Alternative Input",
+        paragraphText: "Select a more specific input instead of '" + item.title + "'. Click on an item to change it.",
+        listOfData: item.links
+      }
     }
     else if (item.status.isMissing) {
-      this.showCard = "missingInput";
+      this.cardDetails = {
+        title: "Data not found",
+        paragraphText: "The input '" + item.title + "' was unable to be found on Wikipedia. Please try another word.",
+        listOfData: []
+      }
     }
     else {
-      this.showCard = "moreInformation";
+      this.cardDetails = {
+        title: "More information",
+        paragraphText: "The input '" + item.title + "', can be described with the following categories.",
+        listOfData: item.categories
+      }
+    }
+    this.showCard = true;
+  }
+
+  cardItemClicked(data) {
+    let cardTitle = data[0];
+    let itemSelected = data[1];
+
+    if (cardTitle == "Alternative Input") {  
+      this._itemService.selectLink(this.selectedItem, itemSelected);  
+      console.log("The input '" + this.selectedItem.title + "' has been replaced with " + itemSelected + "."); // Replace with non-intrusive alert
+      this.closeCard();
     }
   }
 }
