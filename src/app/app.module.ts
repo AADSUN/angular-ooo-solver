@@ -8,7 +8,9 @@ import { MainpageComponent } from './mainpage/mainpage.component';
 import { CurrentinputsComponent } from './currentinputs/currentinputs.component';
 
 import { ItemService } from './services/item.service';
+import { OddOneOutService } from './services/odd-one-out.service';
 import { WikipediaService } from './services/wikipedia.service';
+
 import { MoreInformationComponent } from './card/more-information/more-information.component';
 import { MissingInputComponent } from './card/missing-input/missing-input.component';
 import { AlternativeInputComponent } from './card/alternative-input/alternative-input.component';
@@ -29,7 +31,8 @@ import { AlternativeInputComponent } from './card/alternative-input/alternative-
   ],
   providers: [
     ItemService,
-    WikipediaService
+    WikipediaService,
+    OddOneOutService
   ],
   bootstrap: [AppComponent]
 })

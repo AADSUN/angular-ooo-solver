@@ -7,14 +7,14 @@ export class ItemService {
   listOfItems: Array<Item> = [];
   constructor(private _wikiService: WikipediaService) { }
 
-  addItem(textInput: string) {
+  addItem(textInput: string, depthToSearch: number) {
     if (textInput === "") return;
     if (this.listOfItems.some(e => e.title.toLowerCase() === textInput.toLowerCase())){
       console.log("Item has already been inputted."); // Replace with a non-intrustive alert
       return;
     }
 
-    let item = new Item(textInput, 2);
+    let item = new Item(textInput, depthToSearch);
     this.listOfItems.push(item);
     this.getItemData(item);
   }

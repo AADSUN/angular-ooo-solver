@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../services/item.service';
+import { OddOneOutService } from '../services/odd-one-out.service';
 import { Item } from '../item';
 
 @Component({
@@ -14,19 +15,33 @@ export class MainpageComponent implements OnInit {
   selectedItem: Item;
   showCard: string = "";
 
-  constructor(private _itemService: ItemService) { 
+  constructor(private _itemService: ItemService, private _oddOneOutService: OddOneOutService) { 
     this.listOfInputs = this._itemService.listOfItems;
     this.addNewInput("Apple");
     this.addNewInput("Banana");
-    this.addNewInput("NoPage123");
-    this.addNewInput("table");
+    this.addNewInput("Peach");
+    this.addNewInput("Pie");
   }
 
   ngOnInit() {
   }
 
   submit(){
-    console.log("Submit pressed");
+    try {
+      let result = this._oddOneOutService.getOddOneOut(this.listOfInputs);
+      console.log(result);
+    }
+    catch(e) {
+      if (e == "Invalid parameter length") {
+        console.log("Required 3 items or more");
+      }
+      else if (e == "Certain items are not ready") {
+        console.log("Certain items are not ready yet");
+      }
+      else {
+        console.log("Unknown error");
+      }
+    }    
   }
 
   closeCard() {
@@ -34,7 +49,7 @@ export class MainpageComponent implements OnInit {
   }
 
   addNewInput(textInput: string){
-    this._itemService.addItem(textInput);
+    this._itemService.addItem(textInput, 3);
     this.textField = "";
   }
 
