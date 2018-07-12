@@ -1,11 +1,29 @@
 <div id="topSection">
-    <div id="formBox">
-      <h1>Odd One Out Solver</h1>
-      <input id="textInput" #myValue type="text" [(ngModel)]="textField" (keyup.enter)="addNewInput(myValue.value)">
-      <button type="button" class="btn btn-primary" (click)=submit()>Submit</button>
+  <div id="formBox">
+    <div id="hamburgerContainer">
+      <div class="hamburgerMenu" (click)="toggleMenu = !toggleMenu" [ngClass]="{change: toggleMenu}">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+      </div>
     </div>
+
+    <h1 id="pageTitle">Odd One Out Solver</h1>
+    <p id="pageDescription">Solve Odd One Out questions online</p>
+    <div id="inputBar" class="noselect">
+      <input id="textInput" #textValue type="text" [(ngModel)]="textField" (keyup.enter)="addNewInput(textValue.value)">
+      <span id="enterButton" (click)="addNewInput(textValue.value)">Enter</span>
+    </div>
+    <button id="submitButton" type="button" (click)=submit()>Solve</button>
+  </div>
 </div>
 <div id="bottomSection">
+  <div id="pullDownBar">
+      <img id="settings" src="../../assets/svg/settings.svg">
+  </div>
+  <!-- <div id="settingSection">
+  </div> -->
+
   <div id="cardSection">
     <div>
       <app-currentinputs
@@ -14,9 +32,8 @@
         (onItemClicked)="onItemClicked($event)">
       </app-currentinputs>
     </div>
-
     <div>
-      <app-card
+      <app-card     
         *ngIf="showCard"
         [title]="cardDetails.title"
         [paragraphText]="cardDetails.paragraphText"
@@ -25,7 +42,6 @@
         (closeCard)="closeCard()">
       </app-card>
     </div>
-
     <div>
       <app-card
         *ngIf="result != null"
