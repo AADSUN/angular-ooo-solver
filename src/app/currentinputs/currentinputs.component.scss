@@ -1,0 +1,161 @@
+.card {
+    text-align: left;
+    border-radius: 0;
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.397);
+
+    li {    
+        -moz-transition: all .1s ease-in;
+        -o-transition: all .1s ease-in;
+        -webkit-transition: all .1s ease-in;
+        transition: all .1s ease-in;    
+        padding: 12px 0 12px 0;
+
+        #leftSide {
+            float: left;
+            width: 75%;
+            max-height: inherit;
+            padding-left: 1em;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        #rightSide {
+            display: inline-flex;
+            align-items: center;
+            float: right;
+            width: 25%;
+
+            #deleteButton {
+                width: 8px; 
+                height: 8px;
+                margin-right: 0.5em;
+                margin-left: 0.5em;
+            }
+            
+            #deleteButton:hover {
+                background-color: grey;
+            }
+            
+            #deleteButton:active {
+                background-color: rgb(51, 51, 51);
+            }
+            
+            #questionMark {
+                width: 20px;
+            }
+
+            #questionMark:hover {
+                transform: scale(1.1);
+                -webkit-transform: scale(1.1);
+                -moz-transform: scale(1.1);
+                -ms-transform: scale(1.1);
+                -o-transform: scale(1.1);
+            }
+            
+            #questionMark:active {
+                transform: scale(1.1);
+                -webkit-transform: scale(1);
+                -moz-transform: scale(1);
+                -ms-transform: scale(1);
+                -o-transform: scale(1);
+            }
+        }        
+    }
+    
+    li:hover {
+        background-color: #ada4a4;
+        border-color: #ada4a4;
+    }
+    
+    li:active {
+        background-color: #857f7f;
+    }    
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
+}
+
+.glyphicon-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -ms-animation: spin .7s infinite linear;
+    -webkit-animation: spinw .7s infinite linear;
+    -moz-animation: spinm .7s infinite linear;
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}
+  
+@-webkit-keyframes spinw {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@-moz-keyframes spinm {
+    from { -moz-transform: rotate(0deg);}
+    to { -moz-transform: rotate(360deg);}
+}
+
+.ambigData {
+    background-color: orange;
+}
+
+.missingData {
+    background-color: red;
+}
+
+/* Loading symbol sourced from https://loading.io/css/ */
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    margin-left: 4px;
+    margin-right: 4px;
+
+    div {
+        box-sizing: border-box;
+        display: block;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        /* margin: 6px; */
+        border: 2px solid #363636;
+        border-radius: 50%;
+        animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        border-color: #363636 transparent transparent transparent;
+    }
+
+    div:nth-child(1) {
+        animation-delay: -0.45s;    
+    }
+
+    div:nth-child(2) {
+        animation-delay: -0.3s;
+    }
+
+    div:nth-child(3) {
+        animation-delay: -0.15s;
+    }
+
+    @keyframes lds-ring {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+}
+
+.hidden {
+    visibility: hidden;
+}

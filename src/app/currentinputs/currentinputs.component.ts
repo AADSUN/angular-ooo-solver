@@ -5,7 +5,7 @@ import { ItemService } from '../services/item.service';
 @Component({
   selector: 'app-currentinputs',
   templateUrl: './currentinputs.component.html',
-  styleUrls: ['./currentinputs.component.css']
+  styleUrls: ['./currentinputs.component.scss']
 })
 export class CurrentinputsComponent implements OnInit {
   @Input('listOfInputs') listOfInputs: Array<Item>;

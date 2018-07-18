@@ -12,35 +12,45 @@ ul {
     border-top: 0.5px s;
     border-top: 1px solid rgba(0,0,0,.125);
     border-bottom: 1px solid rgba(0,0,0,.125);
-}
 
-li {    
-    -moz-transition: all .1s ease-in;
-    -o-transition: all .1s ease-in;
-    -webkit-transition: all .1s ease-in;
-    transition: all .1s ease-in;    
-    padding-right: 0px;
+    li {    
+        -moz-transition: all .1s ease-in;
+        -o-transition: all .1s ease-in;
+        -webkit-transition: all .1s ease-in;
+        transition: all .1s ease-in;    
+        padding-right: 0px;
+    }
+    
+    li:hover {
+        background-color: #ada4a4;
+        border-color: #ada4a4;
+    }
+    
+    li:active {
+        background-color: #857f7f;
+    }
 }
 
 #bottomSection {
     margin: 0.5em;
+
+    #textSpan {
+        float: right;
+        margin-right: 1em;
+        color: rgb(52, 128, 214);
+    }
+
+    #textSpan:hover {
+        color: rgb(35, 120, 216);
+        font-weight: bold;
+    }
+    
+    #textSpan:active {
+        color: rgb(52, 128, 214);
+        font-weight: normal;
+    }
 }
 
-#textSpan {
-    float: right;
-    margin-right: 1em;
-    color: rgb(52, 128, 214);
-}
-
-#textSpan:hover {
-    color: rgb(35, 120, 216);
-    font-weight: bold;
-}
-
-#textSpan:active {
-    color: rgb(52, 128, 214);
-    font-weight: normal;
-}
 ul::-webkit-scrollbar {
     width: 0.5em;
 }
@@ -52,15 +62,6 @@ ul::-webkit-scrollbar-track {
 ul::-webkit-scrollbar-thumb {
   background-color: darkgrey;
   outline: 1px solid slategrey;
-}
-
-li:hover {
-    background-color: #ada4a4;
-    border-color: #ada4a4;
-}
-
-li:active {
-    background-color: #857f7f;
 }
 
 .noselect {
