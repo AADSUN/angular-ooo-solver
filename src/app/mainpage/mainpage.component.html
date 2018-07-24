@@ -1,13 +1,5 @@
 <div id="topSection">
   <div id="formBox">
-    <!-- <div id="hamburgerContainer">
-      <div class="hamburgerMenu" (click)="toggleMenu = !toggleMenu" [ngClass]="{change: toggleMenu}">
-          <div class="bar1"></div>
-          <div class="bar2"></div>
-          <div class="bar3"></div>
-      </div>
-    </div> -->
-
     <h1 id="pageTitle">Odd One Out Solver</h1>
     <p id="pageDescription">Solve Odd One Out questions online</p>
     <div id="inputBar" class="noselect">
@@ -25,16 +17,16 @@
   <!-- <div id="settingSection">
   </div> -->
 
-  <!-- <div id="informationContainer" *ngIf="listOfInputs.length == 0">
+  <div id="informationContainer" *ngIf="!cardsOpen() && showHelp">
     <div id="informationCard">
+      <img src="assets/svg/x-button.svg" (click)="showHelp = false">
       <h3>Instructions</h3>
       <ol>
-        <li>Input 3 or more items</li>
-        <li>Press submit!</li>
-        <li>Results will be displayed</li>
+        <li>Enter 3 or more items</li>
+        <li>Select solve</li>
       </ol>      
     </div>
-  </div> -->
+  </div>
 
   <div id="cardSection">
     <div>
@@ -63,5 +55,12 @@
         (closeCard)="closeResultCard()">
       </app-card>
     </div>
+  </div>
+</div>
+<div id="footer">
+  <div id="footerItems">
+      <a id="github" href="https://github.com/FriedWings/angular-ooo-solver" target="_blank">
+        Github
+      </a>
   </div>
 </div>

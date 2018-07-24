@@ -26,8 +26,7 @@
             width: 25%;
 
             #deleteButton {
-                width: 8px; 
-                height: 8px;
+                width: 10px; 
                 margin-right: 0.5em;
                 margin-left: 0.5em;
             }
@@ -45,15 +44,15 @@
             }
 
             #questionMark:hover {
-                transform: scale(1.1);
-                -webkit-transform: scale(1.1);
-                -moz-transform: scale(1.1);
-                -ms-transform: scale(1.1);
-                -o-transform: scale(1.1);
+                transform: scale(1.05);
+                -webkit-transform: scale(1.05);
+                -moz-transform: scale(1.05);
+                -ms-transform: scale(1.05);
+                -o-transform: scale(1.05);
             }
             
             #questionMark:active {
-                transform: scale(1.1);
+                transform: scale(1);
                 -webkit-transform: scale(1);
                 -moz-transform: scale(1);
                 -ms-transform: scale(1);

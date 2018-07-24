@@ -14,6 +14,7 @@ export class MainpageComponent implements OnInit {
   result: Object;
   selectedItem: Item;
   showCard: boolean = false;
+  showHelp: boolean = true;
   cardDetails: {
     title: string,
     paragraphText: string,
@@ -100,5 +101,10 @@ export class MainpageComponent implements OnInit {
       console.log("The input '" + this.selectedItem.title + "' has been replaced with " + itemSelected + "."); // Replace with non-intrusive alert
       this.closeCard();
     }
+  }
+
+
+  cardsOpen() {
+    return this.listOfInputs.length > 0 || this.showCard || this.result != null;
   }
 }
