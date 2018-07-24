@@ -14,19 +14,24 @@ export class WikipediaService {
     * @return {Promise} a promise that resolves when successful and rejects when fails 
   */ 
   getCategories(items: Array<string>) {
-    let listOfItems = this.createStringURL(items);
+    let maxItems = 50; // The maximum amount of items Wikipedia allows you to chain together
 
     return new Promise((resolve, reject) => {
-      this._http.get(this.category_url + listOfItems)
-      .subscribe((res) => {
-        let outputDict = {};
-        for (const [key, value] of Object.entries(res['query']['pages'])) {
-          outputDict[value['title']] = value['categories']; 
-        }
-        resolve(outputDict);
-      }, (err) => {
-        reject(err);
-      })
+      for (let i = 0; i < items.length; i += maxItems) {
+        let listOfItems = this.createStringURL(items.slice(i, i + maxItems));
+        this._http.get(this.category_url + listOfItems)
+        .subscribe((res) => {
+          let outputDict = {};
+          for (const [key, value] of Object.entries(res['query']['pages'])) {
+            outputDict[value['title']] = value['categories']; 
+          }
+          if (i + maxItems > items.length) {
+            resolve(outputDict);
+          }
+        }, (err) => {
+          reject(err);
+        })
+      }
     });
   }
 
