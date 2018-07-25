@@ -179,6 +179,18 @@ $white-accent: whitesmoke;
                                     supported by Chrome and Opera */
 }
 
+#alertBar {
+    position: absolute;
+    bottom: 3em;
+    left: 0;
+    width: 100%;
+
+    #alert {
+        display: inline-block;
+        width: 75%;
+    }
+}
+
 #footer {
     position: absolute;
     padding: 0.5em 0 0.5em 0;

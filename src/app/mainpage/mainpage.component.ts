@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ItemService } from '../services/item.service';
 import { OddOneOutService } from '../services/odd-one-out.service';
+import { AlertComponent } from '../alert/alert.component';
 import { Item } from '../item';
 
 @Component({
@@ -9,6 +10,10 @@ import { Item } from '../item';
   styleUrls: ['./mainpage.component.scss']
 })
 export class MainpageComponent implements OnInit {
+
+  @ViewChild(AlertComponent)
+  private alertComponent: AlertComponent;
+
   textField: string = "";
   listOfInputs: Array<Item>;
   result: Object;
@@ -32,7 +37,7 @@ export class MainpageComponent implements OnInit {
     try {
       let result = this._oddOneOutService.getOddOneOut(this.listOfInputs);
       if (result == null) {
-        console.log("No result could be found.") // Todo: Search a higher depth
+        this.alertComponent.createAlert("No result could be found!", "primary", 3000); // Todo: Search a higher depth
         return;
       }
       result['paragraphText'] = "The item '" + result.oddOneOut + "', was selected to be the odd one out due to not falling into the categories shown below."
@@ -40,13 +45,14 @@ export class MainpageComponent implements OnInit {
     }
     catch(e) {
       if (e == "Invalid parameter length") {
-        console.log("Required 3 items or more");
+        this.alertComponent.createAlert("To determine the odd one out, a minimum of 3 items are required to be inputted!", "warning", 7000);
       }
       else if (e == "Certain items are not ready") {
-        console.log("Certain items are not ready yet");
+        this.alertComponent.createAlert("Please ensure all items are valid, and allow items to load before solving!", "warning", 7000);
       }
       else {
-        console.log("Unknown error", e);
+        this.alertComponent.createAlert("An unknown error has occured, please try refreshing the page and try again. " +
+                                        "If the problem persists, please email 'davidngu28@gmail.com' with details.", "danger", 0);
       }
     }    
   }
@@ -97,8 +103,9 @@ export class MainpageComponent implements OnInit {
     let itemSelected = data[1];
 
     if (cardTitle == "Alternative Input") {  
+      let oldTitle = (' ' + this.selectedItem.title).slice(1);
       this._itemService.selectLink(this.selectedItem, itemSelected);  
-      console.log("The input '" + this.selectedItem.title + "' has been replaced with " + itemSelected + "."); // Replace with non-intrusive alert
+      this.alertComponent.createAlert("The input '" + oldTitle + "' has been replaced with " + itemSelected + ".", "info", 6000);
       this.closeCard();
     }
   }

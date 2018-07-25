@@ -11,13 +11,15 @@ import { CardComponent } from './card/card.component';
 import { ItemService } from './services/item.service';
 import { OddOneOutService } from './services/odd-one-out.service';
 import { WikipediaService } from './services/wikipedia.service';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainpageComponent,
     CurrentinputsComponent,
-    CardComponent
+    CardComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
