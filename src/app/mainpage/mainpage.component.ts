@@ -66,7 +66,7 @@ export class MainpageComponent implements OnInit {
 
   onItemClicked(data) {
     let item = this._itemService.getItem(data);
-    if (item == null) return;
+    if (item == null || (!item.isReady()) && item.isValid()) return;
     this.selectedItem = item;
     if (item.status.isAmbig) {
       this.cardDetails = {
@@ -102,7 +102,6 @@ export class MainpageComponent implements OnInit {
       this.closeCard();
     }
   }
-
 
   cardsOpen() {
     return this.listOfInputs.length > 0 || this.showCard || this.result != null;
