@@ -10,11 +10,15 @@
         transition: all .1s ease-in;    
         padding: 12px 0 12px 0;
 
+        #leftSide, #rightSide {
+            padding-left: 1em;
+            padding-right: 1em;
+        }
+
         #leftSide {
             float: left;
             width: 75%;
             max-height: inherit;
-            padding-left: 1em;
             overflow: hidden;
             white-space: nowrap;
         }
@@ -27,7 +31,6 @@
 
             #deleteButton {
                 width: 10px; 
-                margin-right: 0.5em;
                 margin-left: 0.5em;
             }
             

@@ -10,13 +10,6 @@
   </div>
 </div>
 <div id="bottomSection">
-  <!-- <div id="pullDownBar">
-      <img id="settings" src="../../assets/svg/settings.svg">
-  </div> -->
-  
-  <!-- <div id="settingSection">
-  </div> -->
-
   <div id="informationContainer" *ngIf="!cardsOpen() && showHelp">
     <div id="informationCard">
       <img src="assets/svg/x-button.svg" (click)="showHelp = false">
@@ -28,32 +21,34 @@
     </div>
   </div>
 
-  <div id="cardSection">
-    <div>
-      <app-currentinputs
-        *ngIf="listOfInputs.length > 0"
-        [listOfInputs]="listOfInputs"
-        (onItemClicked)="onItemClicked($event)">
-      </app-currentinputs>
-    </div>
-    <div>
-      <app-card     
-        *ngIf="showCard"
-        [title]="cardDetails.title"
-        [paragraphText]="cardDetails.paragraphText"
-        [listOfData]="cardDetails.listOfData"    
-        (onItemClicked)="cardItemClicked($event)"  
-        (closeCard)="closeCard()">
-      </app-card>
-    </div>
-    <div>
-      <app-card
-        *ngIf="result != null"
-        [title]="'Results'"
-        [paragraphText]="result.paragraphText"
-        [listOfData]="result.commonItems"      
-        (closeCard)="closeResultCard()">
-      </app-card>
+  <div id="cardSection" class="container-fluid">
+    <div class="row">
+      <div class="col cardHolder" align="center">
+        <app-currentinputs
+          *ngIf="listOfInputs.length > 0"
+          [listOfInputs]="listOfInputs"
+          (onItemClicked)="onItemClicked($event)">
+        </app-currentinputs>
+      </div>
+      <div class="col cardHolder" align="center">
+        <app-card     
+          *ngIf="showCard"
+          [title]="cardDetails.title"
+          [paragraphText]="cardDetails.paragraphText"
+          [listOfData]="cardDetails.listOfData"    
+          (onItemClicked)="cardItemClicked($event)"  
+          (closeCard)="closeCard()">
+        </app-card>
+      </div>
+      <div class="col cardHolder" align="center">
+        <app-card
+          *ngIf="result != null"
+          [title]="'Results'"
+          [paragraphText]="result.paragraphText"
+          [listOfData]="result.commonItems"      
+          (closeCard)="closeResultCard()">
+        </app-card>
+      </div>
     </div>
   </div>
 </div>
@@ -62,7 +57,7 @@
 </div>
 <div id="footer">
   <div id="footerItems">
-      <a id="github" href="https://github.com/FriedWings/angular-ooo-solver" target="_blank">
+      <a id="github" href="https://github.com/dguyen/angular-ooo-solver" target="_blank">
         Github
       </a>
   </div>

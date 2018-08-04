@@ -23,45 +23,47 @@ $white-accent: whitesmoke;
         color: $white-accent;
     }
 
-    #textInput {
-        width: 30em;
-        height: inherit;
-        padding-left: 12px;
-        border-radius: 0.35em 0 0 0.35em;
-        border: 1px solid white;
-        vertical-align: middle;
-        float: left;
-    }
-    
-    #textInput:focus {
-        outline: none;
-    }
-    
-    #enterButton {
-        float: left;
-        height: inherit;
-        width: 4em;
-        background-color: transparent;
-        border-radius: 0 0.35em 0.35em 0;
-        border: 1px solid white;
-        padding: 5px 0px 5px 0px;
-        color: white;
-    }
-
-    #enterButton:hover {
-        color: $accent-color;
-    }
-    
-    #enterButton:active {
-        color: #f14870;
-    }
-
     #inputBar {
         margin: auto;
         height: 2em;
         width: fit-content;
+        width: 100%;
+        max-width: 40em;
         margin-top: 1em;
         margin-bottom: 1em; 
+
+        #textInput {
+            width: 90%;
+            height: inherit;
+            padding-left: 12px;
+            border-radius: 0.35em 0 0 0.35em;
+            border: 1px solid white;
+            vertical-align: middle;
+            float: left;
+        }
+        
+        #textInput:focus {
+            outline: none;
+        }
+        
+        #enterButton {
+            float: left;
+            height: inherit;
+            width: 10%;
+            background-color: transparent;
+            border-radius: 0 0.35em 0.35em 0;
+            border: 1px solid white;
+            padding: 5px 0px 5px 0px;
+            color: white;
+        }
+    
+        #enterButton:hover {
+            color: $accent-color;
+        }
+        
+        #enterButton:active {
+            color: #f14870;
+        }
     }
     
     #submitButton {
@@ -98,14 +100,12 @@ $white-accent: whitesmoke;
 
     #cardSection {
         margin-top: 2em;
-        display: flex;
         width: 100%;
-        flex-direction: row;
-        justify-content: space-evenly;
-    }
-    
-    #cardSection > div {
-        width: 320px;
+        
+        .cardHolder {
+            margin: auto;
+            height: 50px;
+        }
     }
     
     #informationContainer {
@@ -146,27 +146,7 @@ $white-accent: whitesmoke;
                 color: $accent-color;
             }
         }
-    }
-
-    #settings {
-        width: 20px;
-    }
-    
-    #pullDownBar {
-        float: right;
-        margin-right: 2em;
-        background-color: rgb(65, 61, 61);
-        width: 5em;
-        height: 2em;
-        border-radius: 0 0 0.75em 0.75em;
-    }
-    
-    #settingSection {
-        border-bottom: 1px solid rgb(173, 173, 173);
-        width: 100%;
-        padding-top: 1em;
-        padding-bottom: 1em;
-    }    
+    } 
 }
 
 .noselect {
